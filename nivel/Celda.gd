@@ -12,8 +12,8 @@ func _ready():
 	emit_signal("notificar_tipo", tipo, self.name)
 
 func tipo_set(new_value):
-	emit_signal("notificar_tipo", new_value, self)
 	tipo = new_value
+	emit_signal("notificar_tipo", new_value, self)
 	
 func tipo_get():
 	return tipo
