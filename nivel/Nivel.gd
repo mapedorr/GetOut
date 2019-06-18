@@ -1,81 +1,74 @@
 tool
 extends Node2D
 
-var espera_movimiento = 0
+signal accion_jugador(dir)
+
+var espera_accion = 0
 var moviendo_personaje = false
-var direccion_movimiento = Vector2()
 var objetivo_alcanzado = false
-var pared_node = preload("res://fichas/Pared.tscn")
+var pared_node = preload("res://fichas/pared/Pared.tscn")
 
-# Llamado cuando el nodo entra en el árbol de la escena por primera vez.
+# Llamada cuando el nodo entra en el árbol de la escena por primera vez.
 func _ready():
-	# Conectar señales
-	$CeldasContainer.connect("ubicar_personaje", self, "ubicar_personaje")
-	$CeldasContainer.connect("esconder_personaje", self, "esconder_personaje")
-	$CeldasContainer.connect("ubicar_salida", self, "ubicar_salida")
-	$CeldasContainer.connect("esconder_salida", self, "esconder_salida")
-	$CeldasContainer.connect("ubicar_pared", self, "ubicar_pared")
-	$CeldasContainer.connect("eliminar_pared", self, "eliminar_pared")
-	$Personaje.connect("personaje_movido", self, "mover_personaje")
-	# Ubicar paredes
-	for celda in $CeldasContainer.celdas_paredes:
-		self.ubicar_pared(celda)
+#	Conectar señales
+	conectar()
+#	Ubicar paredes
+	for celda in $Tablero.celdas_paredes:
+		self.ubicar("pared", celda)
+#	Ubicar salida
+	if $Tablero.celda_salida:
+		self.ubicar("salida", $Tablero.celda_salida)
+#	Ubicar personaje
+	if $Tablero.celda_personaje:
+		self.ubicar("personaje", $Tablero.celda_personaje)
 
-func mover_personaje(dir):
-	if objetivo_alcanzado:
-		return
-	espera_movimiento += 1
-	if not moviendo_personaje and espera_movimiento == 2:
-		moviendo_personaje = true
-		direccion_movimiento = dir * 48.0
-		while(true):
-			var posicion_personaje = $CeldasContainer.celda_personaje.get_position()
-			var celda_destino = $CeldasContainer.obtener_celda_en(
-				posicion_personaje + direccion_movimiento
-			)
-			if celda_destino:
-				if celda_destino.tipo == "Pared":
-					break
-				yield($Personaje.mover(celda_destino.get_position()), "completed")
-				$CeldasContainer.celda_personaje = celda_destino
-				if $CeldasContainer.celda_personaje.tipo == "Salida":
-					# El jugador ha llegado a la salida
-					objetivo_alcanzado = true
-					print("Has llegado a la salida!")
-					break
-			else:
-				break
-		moviendo_personaje = false
-		espera_movimiento = 0
+func conectar():
+#	Señales del Tablero
+	$Tablero.connect("ubicar", self, "ubicar")
+	$Tablero.connect("esconder", self, "esconder")
+	$Tablero.connect("eliminar", self, "eliminar")
+#	Señales del Personaje
+	$Personaje.connect("accion_personaje", self, "accion_personaje")
+
+func accion_personaje(dir):
+	espera_accion += 1
+	if espera_accion == 2:
+		emit_signal("accion_jugador", dir * 48.0)
+		espera_accion = 0
+
+func obtener_celda_destino(dir):
+	var posicion_personaje = $Tablero.celda_personaje.get_position()
+	return $Tablero.obtener_celda_en(posicion_personaje + dir)
+
+func mover_personaje(celda_destino):
+	yield($Personaje.mover(celda_destino), "completed")
+	$Tablero.celda_personaje = celda_destino
 
 # ------------------------------------------------------------------------------
 # Funciones de retroalimentación en inspector
 # ------------------------------------------------------------------------------
-func esconder_personaje(esconder):
-	if esconder:
-		$Personaje.hide()
-	else:
-		$Personaje.show()
+func ubicar(ficha, celda):
+	match ficha:
+		"pared":
+			var pared = pared_node.instance()
+			pared.set_position(celda.get_position())
+			$Paredes.add_child(pared)
+		"salida":
+			$Salida.set_position(celda.get_position())
+		"personaje":
+			$Personaje.set_position(celda.get_position())
 
-func ubicar_personaje(celda):
-	$Personaje.set_position(celda.get_position())
+func esconder(ficha, esconder):
+	match ficha:
+		"salida":
+			$Salida.hide() if esconder else $Salida.show()
+		"personaje":
+			$Personaje.hide() if esconder else $Personaje.show()
 
-func esconder_salida(esconder):
-	if esconder:
-		$Salida.hide()
-	else:
-		$Salida.show()
-
-func ubicar_salida(celda):
-	$Salida.set_position(celda.get_position())
-
-func ubicar_pared(celda):
-	var pared = pared_node.instance()
-	pared.set_position(celda.get_position())
-	$Paredes.add_child(pared)
-
-func eliminar_pared(celda):
-	for pared in $Paredes.get_children():
-		if pared.get_position() == celda.get_position():
-			pared.queue_free()
+func eliminar(ficha, celda):
+	match ficha:
+		"pared":
+			for pared in $Paredes.get_children():
+				if pared.get_position() == celda.get_position():
+					pared.queue_free()
 # ------------------------------------------------------------------------------

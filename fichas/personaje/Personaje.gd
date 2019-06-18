@@ -1,6 +1,6 @@
 extends Node2D
 
-signal personaje_movido(dir)
+signal accion_personaje(dir)
 
 # Llamado cuando el nodo entra en el árbol de la escena por primera vez.
 func _ready():
@@ -14,25 +14,26 @@ func _process(delta):
 	if Input.is_action_pressed('ui_right'):
 		direccion.x += 1
 		se_mueve = true
-	if Input.is_action_pressed('ui_left'):
+	elif Input.is_action_pressed('ui_left'):
 		direccion.x -= 1
 		se_mueve = true
 	if Input.is_action_pressed('ui_up'):
 		direccion.y -= 1
 		se_mueve = true
-	if Input.is_action_pressed('ui_down'):
+	elif Input.is_action_pressed('ui_down'):
 		direccion.y += 1
 		se_mueve = true
 
 	if se_mueve:
-		emit_signal("personaje_movido", direccion)
+		emit_signal("accion_personaje", direccion)
 
-func mover(destino):
+# Función que desplaza al Personaje a la celda recibida como parámetro
+func mover(celda_destino):
 	$Tween.interpolate_property(
 		self,
 		"position",
 		self.get_position(),
-		destino,
+		celda_destino.get_position(),
 		0.1,
 		Tween.TRANS_SINE,
 		Tween.EASE_OUT
