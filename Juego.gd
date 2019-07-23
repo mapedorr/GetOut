@@ -3,7 +3,7 @@ extends Node2D
 export(Array, PackedScene) var niveles
 
 var moviendo_personaje = false
-var objetivo_alcanzado = false
+var en_salida = false
 var movimientos_hechos = 0
 var en_pausa = false
 var nivel_actual = null
@@ -15,8 +15,11 @@ func _ready():
 #	Conectar señales de GUI
 	$GUI.actualizar_movimientos(movimientos_hechos)
 	$GUI.connect("juego_pausado", self, "_en_juego_pausado")
+	$GUI.connect("nivel_ganado", self, "terminar_nivel")
+	$GUI.connect("nivel_perdido", self, "reiniciar_nivel")
 
 func iniciar_nivel(indice):
+	en_salida = false
 	nivel_actual = niveles[indice].instance()
 	$Niveles.add_child(nivel_actual)
 	#	Configurar GUI
@@ -25,7 +28,7 @@ func iniciar_nivel(indice):
 	nivel_actual.connect("accion_jugador", self, "accion_jugador")
 
 func accion_jugador(dir):
-	if objetivo_alcanzado:
+	if en_salida:
 		return
 
 	if not en_pausa and not moviendo_personaje:
@@ -50,7 +53,7 @@ func accion_jugador(dir):
 #				- - - - DESPUÉS DE MOVER - - - -
 				if celda_destino.tipo == "Salida":
 #					El jugador ha llegado a la salida
-					objetivo_alcanzado = true
+					en_salida = true
 					break
 			else:
 #				No hacer nada si el jugador intenta salirse del tablero
@@ -61,23 +64,9 @@ func accion_jugador(dir):
 			movimientos_hechos += 1
 			$GUI.actualizar_movimientos(movimientos_hechos)
 		
-		if objetivo_alcanzado:
+		if en_salida:
 #			Mostrar mensaje de victoria o derrota
-			if movimientos_hechos == nivel_actual.min_movimientos:
-				$GUI.mostrar_mensaje("super")
-			elif movimientos_hechos <= nivel_actual.max_movimientos:
-				$GUI.mostrar_mensaje("victoria")
-			else:
-				$GUI.mostrar_mensaje("derrota")
-			yield(get_tree().create_timer(2.0), "timeout")
-			$GUI.ocultar_mensaje()
-			objetivo_alcanzado = false
-			movimientos_hechos = 0
-			$GUI.actualizar_movimientos(movimientos_hechos)
-			contador_niveles += 1
-			if contador_niveles < niveles.size():
-				nivel_actual.queue_free()
-				iniciar_nivel(contador_niveles)
+			$GUI.mostrar_mensaje(movimientos_hechos)
 
 		moviendo_personaje = false
 
@@ -97,3 +86,20 @@ func es_parada(celda):
 
 func _en_juego_pausado(valor):
 	en_pausa = valor
+
+func reiniciar_nivel():
+	reiniciar_gui()
+	nivel_actual.queue_free()
+	iniciar_nivel(contador_niveles)
+
+func terminar_nivel():
+	reiniciar_gui()
+	contador_niveles += 1
+	if contador_niveles < niveles.size():
+		nivel_actual.queue_free()
+		iniciar_nivel(contador_niveles)
+
+func reiniciar_gui():
+	$GUI.ocultar_mensaje()
+	movimientos_hechos = 0
+	$GUI.actualizar_movimientos(movimientos_hechos)

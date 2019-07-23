@@ -1,8 +1,12 @@
 extends CanvasLayer
 
 signal juego_pausado(estado)
+signal nivel_ganado
+signal nivel_perdido
 
 var on_main_menu = false
+var min_movimientos = 0
+var max_movimientos = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,17 +38,26 @@ func actualizar_movimientos(nuevo_valor):
 	$Movimiento/Contenedor/Conteo.text = String(nuevo_valor)
 
 func establecer_movimientos(minimos, maximos):
+	min_movimientos = minimos
+	max_movimientos = maximos
 	$Movimiento/Contenedor/Min.text = "Mínimo: %d" % minimos
 	$Movimiento/Contenedor/Max.text = "Máximo: %d" % maximos
 	
-func mostrar_mensaje(tipo):
-	match tipo:
-		"super":
-			$Mensajes/Super.show()
-		"victoria":
-			$Mensajes/Victoria.show()
-		"derrota":
-			$Mensajes/Derrota.show()
+func mostrar_mensaje(movimientos_hechos):
+	var ganado = true
+	if movimientos_hechos == min_movimientos:
+		$Mensajes/Super.show()
+	elif movimientos_hechos <= max_movimientos:
+		$Mensajes/Victoria.show()
+	else:
+		ganado = false
+		$Mensajes/Derrota.show()
+
+	yield(get_tree().create_timer(1.5), "timeout")
+	if ganado:
+		emit_signal("nivel_ganado")
+	else:
+		emit_signal("nivel_perdido")
 
 func ocultar_mensaje():
 	$Mensajes/Super.hide()

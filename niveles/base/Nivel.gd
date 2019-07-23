@@ -8,11 +8,12 @@ export(int) var max_movimientos = 0
 
 var espera_accion = 0
 var moviendo_personaje = false
-var objetivo_alcanzado = false
 var pared_node = preload("res://fichas/pared/Pared.tscn")
 
 # Llamada cuando el nodo entra en el árbol de la escena por primera vez.
 func _ready():
+#	Guardar celdas originales
+	
 #	Conectar señales
 	conectar()
 #	Ubicar paredes
