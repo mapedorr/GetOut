@@ -1,0 +1,848 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://niveles/base/Nivel.gd" type="Script" id=1]
+[ext_resource path="res://assets/recursos/Theme/por_defecto.tres" type="Theme" id=2]
+[ext_resource path="res://niveles/base/Tablero.gd" type="Script" id=3]
+[ext_resource path="res://niveles/base/celda.png" type="Texture" id=4]
+[ext_resource path="res://niveles/base/Celda.gd" type="Script" id=5]
+[ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=7]
+
+
+
+[node name="Nivel" type="Node2D"]
+script = ExtResource( 1 )
+min_movimientos = 3
+max_movimientos = 4
+
+[node name="TextosTablero" type="Control" parent="."]
+editor/display_folded = true
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 480.0
+margin_bottom = 480.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Filas" type="Control" parent="TextosTablero"]
+editor/display_folded = true
+margin_right = 32.0
+margin_bottom = 512.0
+
+[node name="f0" type="Label" parent="TextosTablero/Filas"]
+margin_top = 32.0
+margin_right = 32.0
+margin_bottom = 80.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="f1" type="Label" parent="TextosTablero/Filas"]
+margin_top = 80.0
+margin_right = 32.0
+margin_bottom = 128.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="f2" type="Label" parent="TextosTablero/Filas"]
+margin_top = 128.0
+margin_right = 32.0
+margin_bottom = 176.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="f3" type="Label" parent="TextosTablero/Filas"]
+margin_top = 176.0
+margin_right = 32.0
+margin_bottom = 224.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="f4" type="Label" parent="TextosTablero/Filas"]
+margin_top = 224.0
+margin_right = 32.0
+margin_bottom = 272.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "4"
+align = 1
+valign = 1
+
+[node name="f5" type="Label" parent="TextosTablero/Filas"]
+margin_top = 272.0
+margin_right = 32.0
+margin_bottom = 320.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="f6" type="Label" parent="TextosTablero/Filas"]
+margin_top = 320.0
+margin_right = 32.0
+margin_bottom = 368.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="f7" type="Label" parent="TextosTablero/Filas"]
+margin_top = 368.0
+margin_right = 32.0
+margin_bottom = 416.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="f8" type="Label" parent="TextosTablero/Filas"]
+margin_top = 416.0
+margin_right = 32.0
+margin_bottom = 464.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="f9" type="Label" parent="TextosTablero/Filas"]
+margin_top = 464.0
+margin_right = 32.0
+margin_bottom = 512.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="Columnas" type="Control" parent="TextosTablero"]
+editor/display_folded = true
+margin_right = 512.0
+margin_bottom = 32.0
+
+[node name="c0" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 32.0
+margin_right = 80.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="c1" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 80.0
+margin_right = 128.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="c2" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 128.0
+margin_right = 176.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "2"
+align = 1
+valign = 1
+
+[node name="c3" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 176.0
+margin_right = 224.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "3"
+align = 1
+valign = 1
+
+[node name="c4" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 224.0
+margin_right = 272.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "4"
+align = 1
+valign = 1
+
+[node name="c5" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 272.0
+margin_right = 320.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="c6" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 320.0
+margin_right = 368.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "6"
+align = 1
+valign = 1
+
+[node name="c7" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 368.0
+margin_right = 416.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "7"
+align = 1
+valign = 1
+
+[node name="c8" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 416.0
+margin_right = 464.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "8"
+align = 1
+valign = 1
+
+[node name="c9" type="Label" parent="TextosTablero/Columnas"]
+margin_left = 464.0
+margin_right = 512.0
+margin_bottom = 32.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+text = "9"
+align = 1
+valign = 1
+
+[node name="Tablero" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Celda00" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Personaje"
+
+[node name="Celda01" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda02" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda03" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda04" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda05" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda06" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda07" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda08" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda09" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 24 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda10" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda11" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda12" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda13" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda14" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda15" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda16" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda17" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda18" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda19" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 72 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda20" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda21" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda22" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda23" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda24" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda25" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda26" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda27" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda28" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda29" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 120 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda30" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda31" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda32" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda33" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda34" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda35" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda36" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda37" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda38" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda39" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 168 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda40" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda41" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda42" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda43" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda44" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda45" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda46" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda47" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda48" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda49" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 216 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Pared"
+
+[node name="Celda50" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Pared"
+
+[node name="Celda51" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda52" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda53" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda54" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda55" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Pared"
+
+[node name="Celda56" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda57" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda58" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda59" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 264 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda60" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda61" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda62" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda63" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda64" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda65" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda66" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda67" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda68" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda69" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 312 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda70" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda71" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda72" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda73" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda74" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda75" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda76" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda77" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda78" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda79" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 360 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda80" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda81" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda82" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda83" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda84" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda85" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda86" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda87" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda88" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda89" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 408 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda90" type="Sprite" parent="Tablero"]
+position = Vector2( 24, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda91" type="Sprite" parent="Tablero"]
+position = Vector2( 72, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda92" type="Sprite" parent="Tablero"]
+position = Vector2( 120, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Ninguno"
+
+[node name="Celda93" type="Sprite" parent="Tablero"]
+position = Vector2( 168, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda94" type="Sprite" parent="Tablero"]
+position = Vector2( 216, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda95" type="Sprite" parent="Tablero"]
+position = Vector2( 264, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda96" type="Sprite" parent="Tablero"]
+position = Vector2( 312, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda97" type="Sprite" parent="Tablero"]
+position = Vector2( 360, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda98" type="Sprite" parent="Tablero"]
+position = Vector2( 408, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = ""
+
+[node name="Celda99" type="Sprite" parent="Tablero"]
+position = Vector2( 456, 456 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+tipo = "Salida"
+
+[node name="Paredes" type="Node2D" parent="."]
+
+[node name="Salida" parent="." instance=ExtResource( 6 )]
+position = Vector2( 456, 456 )
+
+[node name="Personaje" parent="." instance=ExtResource( 7 )]
+position = Vector2( 24, 24 )
+

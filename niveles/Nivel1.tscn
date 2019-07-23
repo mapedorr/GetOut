@@ -1,16 +1,18 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://nivel/Nivel.gd" type="Script" id=1]
+[ext_resource path="res://niveles/base/Nivel.gd" type="Script" id=1]
 [ext_resource path="res://assets/recursos/Theme/por_defecto.tres" type="Theme" id=2]
-[ext_resource path="res://nivel/Tablero.gd" type="Script" id=3]
-[ext_resource path="res://nivel/celda.png" type="Texture" id=4]
-[ext_resource path="res://nivel/Celda.gd" type="Script" id=5]
+[ext_resource path="res://niveles/base/Tablero.gd" type="Script" id=3]
+[ext_resource path="res://niveles/base/celda.png" type="Texture" id=4]
+[ext_resource path="res://niveles/base/Celda.gd" type="Script" id=5]
 [ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=7]
 
+
 [node name="Nivel" type="Node2D"]
-position = Vector2( 256, 64 )
 script = ExtResource( 1 )
+min_movimientos = 2
+max_movimientos = 3
 
 [node name="TextosTablero" type="Control" parent="."]
 editor/display_folded = true
@@ -233,7 +235,6 @@ align = 1
 valign = 1
 
 [node name="Tablero" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="Celda00" type="Sprite" parent="Tablero"]
@@ -270,7 +271,7 @@ tipo = "Ninguno"
 position = Vector2( 264, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda06" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 24 )
@@ -426,7 +427,7 @@ tipo = ""
 position = Vector2( 72, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda32" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 168 )
@@ -474,7 +475,7 @@ tipo = ""
 position = Vector2( 456, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Salida"
+tipo = "Ninguno"
 
 [node name="Celda40" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 216 )
@@ -570,7 +571,7 @@ tipo = "Ninguno"
 position = Vector2( 264, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Pared"
 
 [node name="Celda56" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 264 )
@@ -624,7 +625,7 @@ tipo = ""
 position = Vector2( 216, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda65" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 312 )
@@ -648,7 +649,7 @@ tipo = ""
 position = Vector2( 408, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda69" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 312 )
@@ -792,7 +793,7 @@ tipo = "Ninguno"
 position = Vector2( 120, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda93" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 456 )
@@ -834,12 +835,12 @@ tipo = ""
 position = Vector2( 456, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Salida"
 
 [node name="Paredes" type="Node2D" parent="."]
 
 [node name="Salida" parent="." instance=ExtResource( 6 )]
-position = Vector2( 456, 168 )
+position = Vector2( 456, 456 )
 
 [node name="Personaje" parent="." instance=ExtResource( 7 )]
 position = Vector2( 24, 24 )

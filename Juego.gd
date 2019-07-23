@@ -1,19 +1,34 @@
 extends Node2D
 
+export(Array, PackedScene) var niveles
+
 var moviendo_personaje = false
 var objetivo_alcanzado = false
 var movimientos_hechos = 0
-onready var nivel_actual = $Niveles.get_child(0)
+var en_pausa = false
+var nivel_actual = null
+var contador_niveles = 0
 
 func _ready():
-	nivel_actual.connect("accion_jugador", self, "accion_jugador")
+	if niveles.size() > 0:
+		iniciar_nivel(contador_niveles)
+#	Conectar señales de GUI
 	$GUI.actualizar_movimientos(movimientos_hechos)
+	$GUI.connect("juego_pausado", self, "_en_juego_pausado")
+
+func iniciar_nivel(indice):
+	nivel_actual = niveles[indice].instance()
+	$Niveles.add_child(nivel_actual)
+	#	Configurar GUI
+	$GUI.establecer_movimientos(nivel_actual.min_movimientos, nivel_actual.max_movimientos)
+#	Conectar señales de nivel
+	nivel_actual.connect("accion_jugador", self, "accion_jugador")
 
 func accion_jugador(dir):
 	if objetivo_alcanzado:
 		return
 
-	if not moviendo_personaje:
+	if not en_pausa and not moviendo_personaje:
 		moviendo_personaje = true
 		var pasos_dados = 0
 
@@ -42,9 +57,27 @@ func accion_jugador(dir):
 				break
 
 		if pasos_dados > 0:
-			# Actualizar el conteo de movimientos en la interfaz gráfica
+#			Actualizar el conteo de movimientos en la interfaz gráfica
 			movimientos_hechos += 1
 			$GUI.actualizar_movimientos(movimientos_hechos)
+		
+		if objetivo_alcanzado:
+#			Mostrar mensaje de victoria o derrota
+			if movimientos_hechos == nivel_actual.min_movimientos:
+				$GUI.mostrar_mensaje("super")
+			elif movimientos_hechos <= nivel_actual.max_movimientos:
+				$GUI.mostrar_mensaje("victoria")
+			else:
+				$GUI.mostrar_mensaje("derrota")
+			yield(get_tree().create_timer(2.0), "timeout")
+			$GUI.ocultar_mensaje()
+			objetivo_alcanzado = false
+			movimientos_hechos = 0
+			$GUI.actualizar_movimientos(movimientos_hechos)
+			contador_niveles += 1
+			if contador_niveles < niveles.size():
+				nivel_actual.queue_free()
+				iniciar_nivel(contador_niveles)
 
 		moviendo_personaje = false
 
@@ -62,5 +95,5 @@ func es_obstaculo(celda):
 func es_parada(celda):
 	pass
 
-func actualizar_gui():
-	pass
+func _en_juego_pausado(valor):
+	en_pausa = valor
