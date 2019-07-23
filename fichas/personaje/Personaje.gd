@@ -17,6 +17,7 @@ func _process(delta):
 	elif Input.is_action_pressed('ui_left'):
 		direccion.x -= 1
 		se_mueve = true
+
 	if Input.is_action_pressed('ui_up'):
 		direccion.y -= 1
 		se_mueve = true

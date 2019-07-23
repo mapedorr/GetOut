@@ -255,10 +255,10 @@ script = ExtResource( 5 )
 tipo = "Ninguno"
 
 [node name="Celda03" type="Sprite" parent="Tablero"]
-position = Vector2( 168, 24.0975 )
+position = Vector2( 168, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda04" type="Sprite" parent="Tablero"]
 position = Vector2( 216, 24 )
@@ -270,7 +270,7 @@ tipo = "Ninguno"
 position = Vector2( 264, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Pared"
 
 [node name="Celda06" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 24 )
@@ -426,7 +426,7 @@ tipo = ""
 position = Vector2( 72, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Pared"
 
 [node name="Celda32" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 168 )
@@ -474,7 +474,7 @@ tipo = ""
 position = Vector2( 456, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Salida"
 
 [node name="Celda40" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 216 )
@@ -534,7 +534,7 @@ tipo = "Ninguno"
 position = Vector2( 456, 216 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Salida"
+tipo = "Ninguno"
 
 [node name="Celda50" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 264 )
@@ -624,7 +624,7 @@ tipo = ""
 position = Vector2( 216, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Pared"
 
 [node name="Celda65" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 312 )
@@ -636,7 +636,7 @@ tipo = ""
 position = Vector2( 312, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Pared"
+tipo = "Ninguno"
 
 [node name="Celda67" type="Sprite" parent="Tablero"]
 position = Vector2( 360, 312 )
@@ -648,7 +648,7 @@ tipo = ""
 position = Vector2( 408, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda69" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 312 )
@@ -837,12 +837,9 @@ script = ExtResource( 5 )
 tipo = ""
 
 [node name="Paredes" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Salida" parent="." instance=ExtResource( 6 )]
-position = Vector2( 456, 216 )
+position = Vector2( 456, 168 )
 
 [node name="Personaje" parent="." instance=ExtResource( 7 )]
 position = Vector2( 24, 24 )

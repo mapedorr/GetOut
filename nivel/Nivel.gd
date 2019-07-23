@@ -32,7 +32,7 @@ func conectar():
 
 func accion_personaje(dir):
 	espera_accion += 1
-	if espera_accion == 2:
+	if espera_accion == 4:
 		emit_signal("accion_jugador", dir * 48.0)
 		espera_accion = 0
 

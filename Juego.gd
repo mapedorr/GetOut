@@ -2,10 +2,12 @@ extends Node2D
 
 var moviendo_personaje = false
 var objetivo_alcanzado = false
+var movimientos_hechos = 0
 onready var nivel_actual = $Niveles.get_child(0)
 
 func _ready():
 	nivel_actual.connect("accion_jugador", self, "accion_jugador")
+	$GUI.actualizar_movimientos(movimientos_hechos)
 
 func accion_jugador(dir):
 	if objetivo_alcanzado:
@@ -13,6 +15,8 @@ func accion_jugador(dir):
 
 	if not moviendo_personaje:
 		moviendo_personaje = true
+		var pasos_dados = 0
+
 		while(true):
 #			En base a la dirección a la cuál se quiere mover el jugador,
 #			verificar cuál es la celda a la que debería moverse el Personaje
@@ -26,6 +30,7 @@ func accion_jugador(dir):
 
 #				Desplazar el Personaje a la siguiente celda
 				yield(nivel_actual.mover_personaje(celda_destino), "completed")
+				pasos_dados += 1
 
 #				- - - - DESPUÉS DE MOVER - - - -
 				if celda_destino.tipo == "Salida":
@@ -35,6 +40,12 @@ func accion_jugador(dir):
 			else:
 #				No hacer nada si el jugador intenta salirse del tablero
 				break
+
+		if pasos_dados > 0:
+			# Actualizar el conteo de movimientos en la interfaz gráfica
+			movimientos_hechos += 1
+			$GUI.actualizar_movimientos(movimientos_hechos)
+
 		moviendo_personaje = false
 
 func obtener_grupo(nombre):

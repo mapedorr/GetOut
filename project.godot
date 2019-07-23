@@ -15,9 +15,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="TallerNationalGames"
+config/name="TallerUniversidadNacional"
 run/main_scene="res://Juego.tscn"
 config/icon="res://icon.png"
+
+[debug]
+
+gdscript/warnings/enable=false
 
 [display]
 
