@@ -9,16 +9,26 @@ export(int) var max_movimientos = 0
 var espera_accion = 0
 var moviendo_personaje = false
 var pared_node = preload("res://fichas/pared/Pared.tscn")
+var llave_node = preload("res://fichas/llave/Llave.tscn")
+var cerradura_node = preload("res://fichas/cerradura/Cerradura.tscn")
 
 # Llamada cuando el nodo entra en el árbol de la escena por primera vez.
 func _ready():
-#	Guardar celdas originales
-	
 #	Conectar señales
 	conectar()
+
+#	Ubicar celdas que se pueden repetir
 #	Ubicar paredes
-	for celda in $Tablero.celdas_paredes:
+	for celda in $Tablero.celdas_pared:
 		self.ubicar("pared", celda)
+#	Ubicar llaves
+	for celda in $Tablero.celdas_llave:
+		self.ubicar("llave", celda)
+#	Ubicar cerraduras
+	for celda in $Tablero.celdas_cerradura:
+		self.ubicar("cerradura", celda)
+
+#	Ubicar celdas únicas
 #	Ubicar salida
 	if $Tablero.celda_salida:
 		self.ubicar("salida", $Tablero.celda_salida)
@@ -52,15 +62,29 @@ func mover_personaje(celda_destino):
 # Funciones de retroalimentación en inspector
 # ------------------------------------------------------------------------------
 func ubicar(ficha, celda):
+	var instancia = null
+	var contenedor = null
+
 	match ficha:
 		"pared":
-			var pared = pared_node.instance()
-			pared.set_position(celda.get_position())
-			$Paredes.add_child(pared)
+			instancia = pared_node.instance()
+			contenedor = $Paredes
+		"llave":
+			instancia = llave_node.instance()
+			contenedor = $Llaves
+		"cerradura":
+			instancia = cerradura_node.instance()
+			contenedor = $Cerraduras
 		"salida":
 			$Salida.set_position(celda.get_position())
 		"personaje":
 			$Personaje.set_position(celda.get_position())
+
+	if instancia:
+		instancia.set_position(celda.get_position())
+		celda.asignar_ficha(instancia)
+		if contenedor:
+			contenedor.add_child(instancia)
 
 func esconder(ficha, esconder):
 	match ficha:
@@ -70,9 +94,19 @@ func esconder(ficha, esconder):
 			$Personaje.hide() if esconder else $Personaje.show()
 
 func eliminar(ficha, celda):
+	var contenedor = null
+
 	match ficha:
 		"pared":
-			for pared in $Paredes.get_children():
-				if pared.get_position() == celda.get_position():
-					pared.queue_free()
+			contenedor = $Paredes
+		"llave":
+			contenedor = $Llaves
+		"cerradura":
+			contenedor = $Cerraduras
+
+	if contenedor:
+		for ficha_en_tablero in contenedor.get_children():
+			if ficha_en_tablero.get_position() == celda.get_position():
+				celda.asignar_ficha(null)
+				ficha_en_tablero.queue_free()
 # ------------------------------------------------------------------------------

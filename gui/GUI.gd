@@ -45,7 +45,7 @@ func establecer_movimientos(minimos, maximos):
 	
 func mostrar_mensaje(movimientos_hechos):
 	var ganado = true
-	if movimientos_hechos == min_movimientos:
+	if movimientos_hechos <= min_movimientos:
 		$Mensajes/Super.show()
 	elif movimientos_hechos <= max_movimientos:
 		$Mensajes/Victoria.show()

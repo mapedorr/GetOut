@@ -8,12 +8,10 @@
 [ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=6]
 [ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=7]
 
-
-
 [node name="Nivel" type="Node2D"]
 script = ExtResource( 1 )
 min_movimientos = 1
-max_movimientos = 1
+max_movimientos = 2
 
 [node name="TextosTablero" type="Control" parent="."]
 editor/display_folded = true
@@ -249,43 +247,36 @@ tipo = "Personaje"
 position = Vector2( 72, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda02" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda03" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda04" type="Sprite" parent="Tablero"]
 position = Vector2( 216, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda05" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda06" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda07" type="Sprite" parent="Tablero"]
 position = Vector2( 360, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda08" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 24 )
@@ -297,7 +288,6 @@ tipo = ""
 position = Vector2( 456, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda10" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 72 )
@@ -309,19 +299,16 @@ tipo = ""
 position = Vector2( 72, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda12" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda13" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda14" type="Sprite" parent="Tablero"]
 position = Vector2( 216, 72 )
@@ -333,7 +320,6 @@ tipo = ""
 position = Vector2( 264, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda16" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 72 )
@@ -345,7 +331,6 @@ tipo = ""
 position = Vector2( 360, 72 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda18" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 72 )
@@ -363,7 +348,6 @@ tipo = ""
 position = Vector2( 24, 120 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda21" type="Sprite" parent="Tablero"]
 position = Vector2( 72, 120 )
@@ -405,13 +389,11 @@ tipo = ""
 position = Vector2( 360, 120 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda28" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 120 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda29" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 120 )
@@ -429,43 +411,36 @@ tipo = ""
 position = Vector2( 72, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda32" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda33" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda34" type="Sprite" parent="Tablero"]
 position = Vector2( 216, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda35" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda36" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda37" type="Sprite" parent="Tablero"]
 position = Vector2( 360, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda38" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 168 )
@@ -477,13 +452,11 @@ tipo = ""
 position = Vector2( 456, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda40" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 216 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda41" type="Sprite" parent="Tablero"]
 position = Vector2( 72, 216 )
@@ -525,19 +498,16 @@ tipo = ""
 position = Vector2( 360, 216 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda48" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 216 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda49" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 216 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda50" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 264 )
@@ -555,25 +525,21 @@ tipo = ""
 position = Vector2( 120, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda53" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda54" type="Sprite" parent="Tablero"]
 position = Vector2( 216, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda55" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda56" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 264 )
@@ -585,7 +551,6 @@ tipo = ""
 position = Vector2( 360, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda58" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 264 )
@@ -597,7 +562,6 @@ tipo = ""
 position = Vector2( 456, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda60" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 312 )
@@ -627,7 +591,6 @@ tipo = ""
 position = Vector2( 216, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda65" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 312 )
@@ -639,19 +602,16 @@ tipo = ""
 position = Vector2( 312, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda67" type="Sprite" parent="Tablero"]
 position = Vector2( 360, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda68" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda69" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 312 )
@@ -663,7 +623,6 @@ tipo = ""
 position = Vector2( 24, 360 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda71" type="Sprite" parent="Tablero"]
 position = Vector2( 72, 360 )
@@ -705,7 +664,6 @@ tipo = ""
 position = Vector2( 360, 360 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda78" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 360 )
@@ -765,19 +723,16 @@ tipo = ""
 position = Vector2( 360, 408 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda88" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 408 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda89" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 408 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda90" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 456 )
@@ -789,13 +744,11 @@ tipo = ""
 position = Vector2( 72, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda92" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
 
 [node name="Celda93" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 456 )
@@ -825,7 +778,6 @@ tipo = ""
 position = Vector2( 360, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda98" type="Sprite" parent="Tablero"]
 position = Vector2( 408, 456 )
@@ -840,6 +792,10 @@ script = ExtResource( 5 )
 tipo = "Salida"
 
 [node name="Paredes" type="Node2D" parent="."]
+
+[node name="Llaves" type="Node2D" parent="."]
+
+[node name="Cerraduras" type="Node2D" parent="."]
 
 [node name="Salida" parent="." instance=ExtResource( 6 )]
 position = Vector2( 456, 456 )

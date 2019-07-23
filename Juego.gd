@@ -8,6 +8,7 @@ var movimientos_hechos = 0
 var en_pausa = false
 var nivel_actual = null
 var contador_niveles = 0
+var llaves = 0
 
 func _ready():
 	if niveles.size() > 0:
@@ -19,6 +20,7 @@ func _ready():
 	$GUI.connect("nivel_perdido", self, "reiniciar_nivel")
 
 func iniciar_nivel(indice):
+	llaves = 0
 	en_salida = false
 	nivel_actual = niveles[indice].instance()
 	$Niveles.add_child(nivel_actual)
@@ -51,6 +53,9 @@ func accion_jugador(dir):
 				pasos_dados += 1
 
 #				- - - - DESPUÉS DE MOVER - - - -
+				if es_parada(celda_destino):
+					break
+
 				if celda_destino.tipo == "Salida":
 #					El jugador ha llegado a la salida
 					en_salida = true
@@ -75,14 +80,21 @@ func obtener_grupo(nombre):
 
 # Evalúa si la celda recibida como parámetro tiene una ficha de obstáculo encima.
 func es_obstaculo(celda):
-	for obstaculo in obtener_grupo("obstaculo"):
-		if obstaculo.get_position() == celda.get_position():
-			return true
-	return false
+	var obstaculo = false
+	if celda.ficha_asociada:
+		obstaculo = celda.ficha_asociada.es_obstaculo
+		celda.ficha_asociada.al_chocar(celda, self)
+	return obstaculo
 
 # Evalúa si la celda recibida como parámetro tiene una ficha de parada encima.
 func es_parada(celda):
-	pass
+	if celda.ficha_asociada:
+		if celda.ficha_asociada.es_parada:
+			celda.ficha_asociada.al_llegar(celda, self)
+			return true
+		else:
+			celda.ficha_asociada.al_llegar(celda, self)
+	return false
 
 func _en_juego_pausado(valor):
 	en_pausa = valor
@@ -103,3 +115,12 @@ func reiniciar_gui():
 	$GUI.ocultar_mensaje()
 	movimientos_hechos = 0
 	$GUI.actualizar_movimientos(movimientos_hechos)
+
+func tiene_llave():
+	return llaves > 0
+
+func quitar_llave():
+	llaves -= 1
+
+func guardar_llave():
+	llaves += 1
