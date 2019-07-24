@@ -1,16 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://niveles/base/Nivel.gd" type="Script" id=1]
 [ext_resource path="res://assets/recursos/Theme/por_defecto.tres" type="Theme" id=2]
 [ext_resource path="res://niveles/base/Tablero.gd" type="Script" id=3]
 [ext_resource path="res://niveles/base/celda.png" type="Texture" id=4]
 [ext_resource path="res://niveles/base/Celda.gd" type="Script" id=5]
-[ext_resource path="res://fichas/portal/Portal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fichas/agujero/Agujero.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=8]
-[ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=9]
+[ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=7]
 
 [node name="Nivel" type="Node2D"]
+editor/display_folded = true
 script = ExtResource( 1 )
 min_movimientos = 1
 max_movimientos = 2
@@ -360,7 +359,6 @@ tipo = ""
 position = Vector2( 120, 120 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
 
 [node name="Celda23" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 120 )
@@ -788,22 +786,9 @@ tipo = "Salida"
 
 [node name="Paredes" type="Node2D" parent="."]
 
-[node name="Llaves" type="Node2D" parent="."]
-
-[node name="Cerraduras" type="Node2D" parent="."]
-
-[node name="Portal" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 312, 24 )
-
-[node name="Agujero" parent="." instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 120, 72 )
-direccion = 1
-
-[node name="Salida" parent="." instance=ExtResource( 8 )]
+[node name="Salida" parent="." instance=ExtResource( 6 )]
 position = Vector2( 456, 456 )
 
-[node name="Personaje" parent="." instance=ExtResource( 9 )]
+[node name="Personaje" parent="." instance=ExtResource( 7 )]
 position = Vector2( 24, 24 )
 

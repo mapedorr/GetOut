@@ -8,7 +8,6 @@ var movimientos_hechos = 0
 var en_pausa = false
 var nivel_actual = null
 var contador_niveles = 0
-var llaves = 0
 
 func _ready():
 	if niveles.size() > 0:
@@ -20,7 +19,6 @@ func _ready():
 	$GUI.connect("nivel_perdido", self, "reiniciar_nivel")
 
 func iniciar_nivel(indice):
-	llaves = 0
 	en_salida = false
 	nivel_actual = niveles[indice].instance()
 	$Niveles.add_child(nivel_actual)
@@ -116,19 +114,3 @@ func reiniciar_gui():
 	$GUI.ocultar_movimientos()
 	movimientos_hechos = 0
 	$GUI.actualizar_movimientos(movimientos_hechos)
-
-func tiene_llave():
-	return llaves > 0
-
-func quitar_llave():
-	llaves -= 1
-
-func guardar_llave():
-	llaves += 1
-
-func entrar_portal(celda, ficha):
-#	Buscar el agujero y poner al personaje allí
-	var celda_agujero = nivel_actual.obtener_agujero()
-	if celda_agujero and celda_agujero.ficha_asociada:
-		nivel_actual.mover_personaje(celda_agujero, false)
-		celda_agujero.ficha_asociada.al_llegar(celda, self)

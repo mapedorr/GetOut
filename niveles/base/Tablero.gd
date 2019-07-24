@@ -7,11 +7,7 @@ signal eliminar(ficha, celda)
 
 var celda_personaje
 var celda_salida
-var celda_portal
-var celda_agujero
 var celdas_pared = []
-var celdas_llave = []
-var celdas_cerradura = []
 
 func _ready():
 	for celda in self.get_children():
@@ -20,10 +16,6 @@ func _ready():
 			celda_personaje = celda
 		elif celda.tipo == "Salida":
 			celda_salida = celda
-		elif celda.tipo == "Portal":
-			celda_portal = celda
-		elif celda.tipo == "Agujero":
-			celda_agujero = celda
 		else:
 #			Guardar las celdas que pueden repetirse
 			poner_en_arreglo(celda.tipo, celda)
@@ -36,8 +28,6 @@ func cambio_celda(tipo, celda):
 		"Ninguno":
 			esconder_celda_unica(celda_personaje, "personaje", celda)
 			esconder_celda_unica(celda_salida, "salida", celda)
-			esconder_celda_unica(celda_portal, "portal", celda)
-			esconder_celda_unica(celda_agujero, "agujero", celda)
 		"Personaje":
 			if celda_personaje:
 				celda_personaje.tipo = "Ninguno"
@@ -50,26 +40,10 @@ func cambio_celda(tipo, celda):
 			emit_signal("ubicar", "salida", celda)
 			emit_signal("esconder", "salida", false)
 			celda_salida = celda
-		"Portal":
-			if celda_portal:
-				celda_portal.tipo = "Ninguno"
-			emit_signal("ubicar", "portal", celda)
-			emit_signal("esconder", "portal", false)
-			celda_portal = celda
-		"Agujero":
-			if celda_agujero:
-				celda_agujero.tipo = "Ninguno"
-			emit_signal("ubicar", "agujero", celda)
-			emit_signal("esconder", "agujero", false)
-			celda_agujero = celda
 		_:
 			asignar_a_celdas(tipo, celda)
 	# Verificar si alguna celda ya no es pared
 	restaurar_celdas(celdas_pared, "Pared")
-	# Verificar si alguna celda ya no es llave
-	restaurar_celdas(celdas_llave, "Llave")
-	# Verificar si alguna celda ya no es cerradura
-	restaurar_celdas(celdas_cerradura, "Cerradura")
 
 func obtener_celda_en(pos):
 	for celda in get_children():
@@ -80,10 +54,6 @@ func poner_en_arreglo(tipo, celda):
 	match tipo:
 		"Pared":
 			celdas_pared.append(celda)
-		"Llave":
-			celdas_llave.append(celda)
-		"Cerradura":
-			celdas_cerradura.append(celda)
 
 func esconder_celda_unica(ref_celda, ficha, celda):
 	if ref_celda and ref_celda.name == celda.name:

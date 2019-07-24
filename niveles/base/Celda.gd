@@ -2,7 +2,7 @@ tool
 extends Sprite
 
 # Definir variables de inspector
-export(String, "Ninguno", "Personaje", "Pared", "Salida", "Llave", "Cerradura", "Portal", "Agujero") var tipo = "Ninguno" setget tipo_set, tipo_get
+export(String, "Ninguno", "Personaje", "Pared", "Salida") var tipo = "Ninguno" setget tipo_set, tipo_get
 
 # Definir señales
 signal notificar_tipo(tipo, celda)

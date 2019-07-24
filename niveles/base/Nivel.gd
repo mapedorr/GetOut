@@ -9,8 +9,6 @@ export(int) var max_movimientos = 0
 var espera_accion = 0
 var moviendo_personaje = false
 var pared_node = preload("res://fichas/pared/Pared.tscn")
-var llave_node = preload("res://fichas/llave/Llave.tscn")
-var cerradura_node = preload("res://fichas/cerradura/Cerradura.tscn")
 
 # Llamada cuando el nodo entra en el árbol de la escena por primera vez.
 func _ready():
@@ -21,20 +19,8 @@ func _ready():
 #	Ubicar paredes
 	for celda in $Tablero.celdas_pared:
 		self.ubicar("pared", celda)
-#	Ubicar llaves
-	for celda in $Tablero.celdas_llave:
-		self.ubicar("llave", celda)
-#	Ubicar cerraduras
-	for celda in $Tablero.celdas_cerradura:
-		self.ubicar("cerradura", celda)
 
 #	---- Ubicar celdas únicas
-#	Ubicar portal
-	if $Tablero.celda_portal:
-		self.ubicar("portal", $Tablero.celda_portal)
-#	Ubicar agujero
-	if $Tablero.celda_agujero:
-		self.ubicar("agujero", $Tablero.celda_agujero)
 #	Ubicar salida
 	if $Tablero.celda_salida:
 		self.ubicar("salida", $Tablero.celda_salida)
@@ -82,16 +68,6 @@ func ubicar(ficha, celda):
 		"pared":
 			instancia = pared_node.instance()
 			contenedor = $Paredes
-		"llave":
-			instancia = llave_node.instance()
-			contenedor = $Llaves
-		"cerradura":
-			instancia = cerradura_node.instance()
-			contenedor = $Cerraduras
-		"portal":
-			instancia = $Portal
-		"agujero":
-			instancia = $Agujero
 		"salida":
 			instancia = $Salida
 			asignar_ficha = false
@@ -109,10 +85,6 @@ func ubicar(ficha, celda):
 func esconder(ficha, esconder):
 	var nodo_ficha = null
 	match ficha:
-		"portal":
-			nodo_ficha = $Portal
-		"agujero":
-			nodo_ficha = $Agujero
 		"salida":
 			nodo_ficha = $Salida
 		"personaje":
@@ -125,10 +97,6 @@ func eliminar(ficha, celda):
 	match ficha:
 		"pared":
 			contenedor = $Paredes
-		"llave":
-			contenedor = $Llaves
-		"cerradura":
-			contenedor = $Cerraduras
 
 	if contenedor:
 		for ficha_en_tablero in contenedor.get_children():
