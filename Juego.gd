@@ -113,6 +113,7 @@ func terminar_nivel():
 
 func reiniciar_gui():
 	$GUI.ocultar_mensaje()
+	$GUI.ocultar_movimientos()
 	movimientos_hechos = 0
 	$GUI.actualizar_movimientos(movimientos_hechos)
 

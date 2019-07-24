@@ -12,6 +12,7 @@ var max_movimientos = 0
 func _ready():
 	$MenuPrincipal/Contenedor/Continuar.connect("pressed", self, "cerrar_main_menu")
 	$MenuPrincipal/Contenedor/Salir.connect("pressed", self, "cerrar_juego")
+	$Movimiento.hide()
 	$MenuPrincipal.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,7 +43,8 @@ func establecer_movimientos(minimos, maximos):
 	max_movimientos = maximos
 	$Movimiento/Contenedor/Min.text = "Mínimo: %d" % minimos
 	$Movimiento/Contenedor/Max.text = "Máximo: %d" % maximos
-	
+	$Movimiento.show()
+
 func mostrar_mensaje(movimientos_hechos):
 	var ganado = true
 	if movimientos_hechos <= min_movimientos:
@@ -63,3 +65,6 @@ func ocultar_mensaje():
 	$Mensajes/Super.hide()
 	$Mensajes/Victoria.hide()
 	$Mensajes/Derrota.hide()
+
+func ocultar_movimientos():
+	$Movimiento.hide()

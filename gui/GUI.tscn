@@ -81,6 +81,7 @@ __meta__ = {
 
 [node name="Movimiento" type="Control" parent="."]
 editor/display_folded = true
+visible = false
 margin_right = 224.0
 margin_bottom = 240.0
 
@@ -129,6 +130,7 @@ align = 1
 valign = 1
 
 [node name="Mensajes" type="Control" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
