@@ -1,2 +1,4 @@
-# GetOut
-A simple puzzles game to showcase in the National Games workshop. Based on the tabletop game: Get Out.
+# Get Out o ¡Escapa!
+
+Un juego de acertijos sencillo que se puede usar como parte de un taller de diseño de videojuegos.
+Basado en el juego de mesa: Get Out.

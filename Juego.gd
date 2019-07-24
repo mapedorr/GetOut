@@ -29,7 +29,7 @@ func iniciar_nivel(indice):
 #	Conectar señales de nivel
 	nivel_actual.connect("accion_jugador", self, "accion_jugador")
 
-func accion_jugador(dir):
+func accion_jugador(dir, contar_movimiento = true):
 	if en_salida:
 		return
 
@@ -64,7 +64,7 @@ func accion_jugador(dir):
 #				No hacer nada si el jugador intenta salirse del tablero
 				break
 
-		if pasos_dados > 0:
+		if pasos_dados > 0 and contar_movimiento:
 #			Actualizar el conteo de movimientos en la interfaz gráfica
 			movimientos_hechos += 1
 			$GUI.actualizar_movimientos(movimientos_hechos)
@@ -124,3 +124,10 @@ func quitar_llave():
 
 func guardar_llave():
 	llaves += 1
+
+func entrar_portal(celda, ficha):
+#	Buscar el agujero y poner al personaje allí
+	var celda_agujero = nivel_actual.obtener_agujero()
+	if celda_agujero and celda_agujero.ficha_asociada:
+		nivel_actual.mover_personaje(celda_agujero, false)
+		celda_agujero.ficha_asociada.al_llegar(celda, self)

@@ -7,6 +7,8 @@ signal eliminar(ficha, celda)
 
 var celda_personaje
 var celda_salida
+var celda_portal
+var celda_agujero
 var celdas_pared = []
 var celdas_llave = []
 var celdas_cerradura = []
@@ -18,6 +20,10 @@ func _ready():
 			celda_personaje = celda
 		elif celda.tipo == "Salida":
 			celda_salida = celda
+		elif celda.tipo == "Portal":
+			celda_portal = celda
+		elif celda.tipo == "Agujero":
+			celda_agujero = celda
 		else:
 #			Guardar las celdas que pueden repetirse
 			poner_en_arreglo(celda.tipo, celda)
@@ -28,17 +34,15 @@ func _ready():
 func cambio_celda(tipo, celda):
 	match tipo:
 		"Ninguno":
-			if celda_personaje and celda_personaje.name == celda.name:
-				emit_signal("esconder", "personaje", true)
-				celda_personaje = null
-			if celda_salida and celda_salida.name == celda.name:
-				emit_signal("esconder", "salida", true)
-				celda_salida = null
+			esconder_celda_unica(celda_personaje, "personaje", celda)
+			esconder_celda_unica(celda_salida, "salida", celda)
+			esconder_celda_unica(celda_portal, "portal", celda)
+			esconder_celda_unica(celda_agujero, "agujero", celda)
 		"Personaje":
 			if celda_personaje:
 				celda_personaje.tipo = "Ninguno"
 			emit_signal("ubicar", "personaje", celda)
-			emit_signal("esconder" , "personaje", false)
+			emit_signal("esconder", "personaje", false)
 			celda_personaje = celda
 		"Salida":
 			if celda_salida:
@@ -46,6 +50,18 @@ func cambio_celda(tipo, celda):
 			emit_signal("ubicar", "salida", celda)
 			emit_signal("esconder", "salida", false)
 			celda_salida = celda
+		"Portal":
+			if celda_portal:
+				celda_portal.tipo = "Ninguno"
+			emit_signal("ubicar", "portal", celda)
+			emit_signal("esconder", "portal", false)
+			celda_portal = celda
+		"Agujero":
+			if celda_agujero:
+				celda_agujero.tipo = "Ninguno"
+			emit_signal("ubicar", "agujero", celda)
+			emit_signal("esconder", "agujero", false)
+			celda_agujero = celda
 		_:
 			asignar_a_celdas(tipo, celda)
 	# Verificar si alguna celda ya no es pared
@@ -69,11 +85,16 @@ func poner_en_arreglo(tipo, celda):
 		"Cerradura":
 			celdas_cerradura.append(celda)
 
+func esconder_celda_unica(ref_celda, ficha, celda):
+	if ref_celda and ref_celda.name == celda.name:
+		emit_signal("esconder", ficha, true)
+		ref_celda = null
+
 func asignar_a_celdas(tipo, celda):
 	poner_en_arreglo(tipo, celda)
 	emit_signal("ubicar", tipo.to_lower(), celda)
 
 func restaurar_celdas(arreglo, tipo):
 	for celda in arreglo:
-		if celda.tipo_get() != tipo:
+		if celda.has_method("tipo_get") and celda.tipo_get() != tipo:
 			emit_signal("eliminar", tipo.to_lower(), celda)

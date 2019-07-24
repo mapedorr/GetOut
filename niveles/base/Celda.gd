@@ -2,7 +2,7 @@ tool
 extends Sprite
 
 # Definir variables de inspector
-export(String, "Ninguno", "Personaje", "Pared", "Salida", "Llave", "Cerradura") var tipo = "Ninguno" setget tipo_set, tipo_get
+export(String, "Ninguno", "Personaje", "Pared", "Salida", "Llave", "Cerradura", "Portal", "Agujero") var tipo = "Ninguno" setget tipo_set, tipo_get
 
 # Definir señales
 signal notificar_tipo(tipo, celda)
@@ -12,7 +12,7 @@ var ficha_asociada = null
 
 # Llamado cuando el nodo entra en el árbol de la escena por primera vez.
 func _ready():
-	emit_signal("notificar_tipo", tipo, self.name)
+	emit_signal("notificar_tipo", tipo, self)
 
 func tipo_set(new_value):
 	tipo = new_value

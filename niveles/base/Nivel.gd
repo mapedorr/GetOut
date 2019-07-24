@@ -17,7 +17,7 @@ func _ready():
 #	Conectar señales
 	conectar()
 
-#	Ubicar celdas que se pueden repetir
+#	---- Ubicar celdas que se pueden repetir
 #	Ubicar paredes
 	for celda in $Tablero.celdas_pared:
 		self.ubicar("pared", celda)
@@ -28,7 +28,13 @@ func _ready():
 	for celda in $Tablero.celdas_cerradura:
 		self.ubicar("cerradura", celda)
 
-#	Ubicar celdas únicas
+#	---- Ubicar celdas únicas
+#	Ubicar portal
+	if $Tablero.celda_portal:
+		self.ubicar("portal", $Tablero.celda_portal)
+#	Ubicar agujero
+	if $Tablero.celda_agujero:
+		self.ubicar("agujero", $Tablero.celda_agujero)
 #	Ubicar salida
 	if $Tablero.celda_salida:
 		self.ubicar("salida", $Tablero.celda_salida)
@@ -54,9 +60,15 @@ func obtener_celda_destino(dir):
 	var posicion_personaje = $Tablero.celda_personaje.get_position()
 	return $Tablero.obtener_celda_en(posicion_personaje + dir)
 
-func mover_personaje(celda_destino):
-	yield($Personaje.mover(celda_destino), "completed")
+func mover_personaje(celda_destino, animar = true):
+	if animar:
+		yield($Personaje.mover(celda_destino), "completed")
+	else:
+		$Personaje.set_position(celda_destino.get_position())
 	$Tablero.celda_personaje = celda_destino
+
+func obtener_agujero():
+	return $Tablero.celda_agujero
 
 # ------------------------------------------------------------------------------
 # Funciones de retroalimentación en inspector
@@ -64,6 +76,7 @@ func mover_personaje(celda_destino):
 func ubicar(ficha, celda):
 	var instancia = null
 	var contenedor = null
+	var asignar_ficha = true
 
 	match ficha:
 		"pared":
@@ -75,23 +88,36 @@ func ubicar(ficha, celda):
 		"cerradura":
 			instancia = cerradura_node.instance()
 			contenedor = $Cerraduras
+		"portal":
+			instancia = $Portal
+		"agujero":
+			instancia = $Agujero
 		"salida":
-			$Salida.set_position(celda.get_position())
+			instancia = $Salida
+			asignar_ficha = false
 		"personaje":
-			$Personaje.set_position(celda.get_position())
+			instancia = $Personaje
+			asignar_ficha = false
 
 	if instancia:
 		instancia.set_position(celda.get_position())
-		celda.asignar_ficha(instancia)
+		if asignar_ficha:
+			celda.asignar_ficha(instancia)
 		if contenedor:
 			contenedor.add_child(instancia)
 
 func esconder(ficha, esconder):
+	var nodo_ficha = null
 	match ficha:
+		"portal":
+			nodo_ficha = $Portal
+		"agujero":
+			nodo_ficha = $Agujero
 		"salida":
-			$Salida.hide() if esconder else $Salida.show()
+			nodo_ficha = $Salida
 		"personaje":
-			$Personaje.hide() if esconder else $Personaje.show()
+			nodo_ficha = $Personaje
+	nodo_ficha.hide() if esconder else nodo_ficha.show()
 
 func eliminar(ficha, celda):
 	var contenedor = null
