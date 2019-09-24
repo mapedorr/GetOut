@@ -1,8 +1,8 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://gui/GUI.gd" type="Script" id=1]
-[ext_resource path="res://assets/recursos/DynamicFont/ConcertOne-24.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/fuentes/ConcertOne.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/recursos/Theme/por_defecto.tres" type="Theme" id=2]
+[ext_resource path="res://assets/fuentes/Monogram.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://gui/sprites/arriba.png" type="Texture" id=4]
 [ext_resource path="res://gui/sprites/w.png" type="Texture" id=5]
 [ext_resource path="res://gui/sprites/abajo.png" type="Texture" id=6]
@@ -14,62 +14,63 @@
 [ext_resource path="res://gui/sprites/r.png" type="Texture" id=12]
 [ext_resource path="res://gui/sprites/z.png" type="Texture" id=13]
 [ext_resource path="res://fichas/personaje/personaje.png" type="Texture" id=14]
-[ext_resource path="res://fichas/pared/pared.png" type="Texture" id=15]
-[ext_resource path="res://fichas/salida/salida.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/pared.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/salida.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
-size = 64
-extra_spacing_bottom = 10
+size = 40
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 18
+size = 96
+use_mipmaps = true
+extra_spacing_top = -24
+extra_spacing_bottom = -12
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 18
+size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 64
-extra_spacing_top = -32
+size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 64
-extra_spacing_top = -10
+size = 96
+extra_spacing_top = -16
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="DynamicFont" id=7]
-size = 32
-extra_spacing_top = -10
+[sub_resource type="DynamicFont" id=6]
+size = 96
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="DynamicFont" id=9]
-size = 24
-extra_spacing_bottom = 12
+[sub_resource type="DynamicFont" id=8]
+size = 40
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
 
 [sub_resource type="DynamicFont" id=10]
-size = 18
-extra_spacing_top = -9
+size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=11]
-size = 18
-extra_spacing_top = -4
+size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=12]
-size = 18
-extra_spacing_top = -4
+size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=13]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 18
 font_data = ExtResource( 3 )
 
 [node name="GUI" type="CanvasLayer"]
@@ -81,7 +82,6 @@ __meta__ = {
 
 [node name="Movimiento" type="Control" parent="."]
 editor/display_folded = true
-visible = false
 margin_right = 224.0
 margin_bottom = 240.0
 
@@ -93,38 +93,42 @@ custom_constants/separation = 8
 alignment = 1
 
 [node name="Titulo" type="Label" parent="Movimiento/Contenedor"]
-margin_top = 52.0
+margin_top = 44.0
 margin_right = 224.0
-margin_bottom = 72.0
-custom_fonts/font = ExtResource( 2 )
+margin_bottom = 77.0
+theme = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "Movimientos"
 align = 1
 valign = 1
 
 [node name="Conteo" type="Label" parent="Movimiento/Contenedor"]
-margin_top = 80.0
+margin_top = 85.0
 margin_right = 224.0
-margin_bottom = 141.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.541176, 0.560784, 0.768627, 1 )
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.847059, 0.219608, 0.262745, 1 )
 text = "0"
 align = 1
 valign = 1
 
 [node name="Min" type="Label" parent="Movimiento/Contenedor"]
-margin_top = 149.0
+margin_top = 135.0
 margin_right = 224.0
-margin_bottom = 164.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 161.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "Mínimo: X"
 align = 1
 valign = 1
 
 [node name="Max" type="Label" parent="Movimiento/Contenedor"]
-margin_top = 172.0
+margin_top = 169.0
 margin_right = 224.0
-margin_bottom = 187.0
-custom_fonts/font = SubResource( 3 )
+margin_bottom = 195.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "Máximo: Y"
 align = 1
 valign = 1
@@ -160,10 +164,11 @@ margin_left = -512.0
 margin_top = -32.0
 margin_right = 512.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "¡re-ásperix!"
 align = 1
 valign = 1
+uppercase = true
 
 [node name="Victoria" type="Control" parent="Mensajes"]
 editor/display_folded = true
@@ -191,10 +196,11 @@ margin_left = -512.0
 margin_top = -32.0
 margin_right = 512.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "¡Buena!"
 align = 1
 valign = 1
+uppercase = true
 
 [node name="Derrota" type="Control" parent="Mensajes"]
 editor/display_folded = true
@@ -222,10 +228,11 @@ margin_left = -512.0
 margin_top = -32.0
 margin_right = 512.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "Paila"
 align = 1
 valign = 1
+uppercase = true
 
 [node name="MenuPrincipal" type="Control" parent="."]
 editor/display_folded = true
@@ -248,28 +255,29 @@ custom_constants/separation = 24
 alignment = 1
 
 [node name="Titulo" type="Label" parent="MenuPrincipal/Contenedor"]
-margin_top = 213.0
-margin_right = 512.0
-margin_bottom = 254.0
-custom_fonts/font = SubResource( 5 )
+margin_top = 134.0
+margin_right = 400.0
+margin_bottom = 212.0
+custom_fonts/font = SubResource( 6 )
 text = "¡Escapa!"
 align = 1
 valign = 1
 
 [node name="Separador" type="HSeparator" parent="MenuPrincipal/Contenedor"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 278.0
-margin_right = 512.0
-margin_bottom = 294.0
+margin_top = 236.0
+margin_right = 400.0
+margin_bottom = 252.0
 custom_constants/separation = 16
 
 [node name="Continuar" type="Button" parent="MenuPrincipal/Contenedor"]
-margin_top = 318.0
-margin_right = 512.0
-margin_bottom = 340.0
+margin_top = 276.0
+margin_right = 400.0
+margin_bottom = 315.0
 mouse_default_cursor_shape = 2
-custom_styles/focus = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+size_flags_horizontal = 5
+custom_styles/focus = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
 custom_colors/font_color_hover = Color( 0.603922, 0.25098, 0.494118, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.960784, 0.937255, 1 )
@@ -277,12 +285,13 @@ text = "Continuar"
 flat = true
 
 [node name="Salir" type="Button" parent="MenuPrincipal/Contenedor"]
-margin_top = 364.0
-margin_right = 512.0
-margin_bottom = 386.0
+margin_top = 339.0
+margin_right = 400.0
+margin_bottom = 378.0
 mouse_default_cursor_shape = 2
-custom_styles/focus = SubResource( 8 )
-custom_fonts/font = SubResource( 7 )
+size_flags_horizontal = 5
+custom_styles/focus = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
 custom_colors/font_color_hover = Color( 0.603922, 0.25098, 0.494118, 1 )
 custom_colors/font_color_pressed = Color( 0.976471, 0.960784, 0.937255, 1 )
@@ -291,8 +300,9 @@ flat = true
 
 [node name="Controles" type="Control" parent="MenuPrincipal"]
 editor/display_folded = true
+visible = false
 margin_top = 240.0
-margin_right = 224.0
+margin_right = 223.0
 margin_bottom = 600.0
 
 [node name="Contenedor" type="VBoxContainer" parent="MenuPrincipal/Controles"]
@@ -300,15 +310,16 @@ editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_right = -10.0
+margin_right = 37.0
 custom_constants/separation = 16
 alignment = 1
 
 [node name="Titulo" type="Label" parent="MenuPrincipal/Controles/Contenedor"]
-margin_top = 68.0
-margin_right = 198.0
-margin_bottom = 100.0
-custom_fonts/font = SubResource( 9 )
+margin_top = 48.0
+margin_right = 244.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.603922, 0.25098, 0.494118, 1 )
 text = "Controles"
 align = 1
@@ -316,9 +327,10 @@ valign = 1
 
 [node name="Arriba" type="HBoxContainer" parent="MenuPrincipal/Controles/Contenedor"]
 editor/display_folded = true
-margin_top = 116.0
-margin_right = 198.0
-margin_bottom = 148.0
+margin_top = 90.0
+margin_right = 244.0
+margin_bottom = 122.0
+size_flags_horizontal = 2
 custom_constants/separation = 8
 alignment = 1
 
@@ -327,187 +339,200 @@ margin_right = 32.0
 margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource( 4 )
 
 [node name="Separation" type="Label" parent="MenuPrincipal/Controles/Contenedor/Arriba"]
 margin_left = 40.0
-margin_top = 13.0
-margin_right = 49.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
+margin_top = 3.0
+margin_right = 52.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 11 )
 text = "o"
 align = 1
 
 [node name="Icono2" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Arriba"]
-margin_left = 57.0
-margin_right = 89.0
+margin_left = 60.0
+margin_right = 92.0
 margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource( 5 )
 
 [node name="Text" type="Label" parent="MenuPrincipal/Controles/Contenedor/Arriba"]
-margin_left = 97.0
-margin_top = 13.0
-margin_right = 198.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
+margin_left = 100.0
+margin_top = 3.0
+margin_right = 244.0
+margin_bottom = 29.0
+size_flags_horizontal = 7
+custom_fonts/font = SubResource( 11 )
 text = "mover arriba"
-align = 1
+valign = 1
 
 [node name="Abajo" type="HBoxContainer" parent="MenuPrincipal/Controles/Contenedor"]
 editor/display_folded = true
-margin_top = 164.0
-margin_right = 198.0
-margin_bottom = 196.0
+margin_top = 138.0
+margin_right = 244.0
+margin_bottom = 170.0
 custom_constants/separation = 8
 alignment = 1
 
 [node name="Icono" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
-margin_left = 2.0
-margin_right = 34.0
-margin_bottom = 32.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource( 6 )
-
-[node name="Separation" type="Label" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
-margin_left = 42.0
-margin_top = 13.0
-margin_right = 51.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
-text = "o"
-align = 1
-
-[node name="Icono2" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
-margin_left = 59.0
-margin_right = 91.0
-margin_bottom = 32.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource( 7 )
-
-[node name="Text" type="Label" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
-margin_left = 99.0
-margin_top = 13.0
-margin_right = 195.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
-text = "mover abajo"
-align = 1
-
-[node name="Izquierda" type="HBoxContainer" parent="MenuPrincipal/Controles/Contenedor"]
-editor/display_folded = true
-margin_top = 212.0
-margin_right = 198.0
-margin_bottom = 244.0
-size_flags_horizontal = 3
-custom_constants/separation = 8
-alignment = 1
-
-[node name="Icono" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Izquierda"]
 margin_right = 32.0
 margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_vertical = 4
+texture = ExtResource( 6 )
+
+[node name="Separation" type="Label" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
+margin_left = 40.0
+margin_top = 3.0
+margin_right = 52.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 11 )
+text = "o"
+align = 1
+
+[node name="Icono2" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
+margin_left = 60.0
+margin_right = 92.0
+margin_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 4
+texture = ExtResource( 7 )
+
+[node name="Text" type="Label" parent="MenuPrincipal/Controles/Contenedor/Abajo"]
+margin_left = 100.0
+margin_top = 3.0
+margin_right = 244.0
+margin_bottom = 29.0
+size_flags_horizontal = 7
+custom_fonts/font = SubResource( 11 )
+text = "mover abajo"
+valign = 1
+
+[node name="Izquierda" type="HBoxContainer" parent="MenuPrincipal/Controles/Contenedor"]
+editor/display_folded = true
+margin_top = 186.0
+margin_right = 244.0
+margin_bottom = 241.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Icono" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Izquierda"]
+margin_top = 11.0
+margin_right = 32.0
+margin_bottom = 43.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource( 8 )
 
 [node name="Separation" type="Label" parent="MenuPrincipal/Controles/Contenedor/Izquierda"]
 margin_left = 40.0
-margin_top = 13.0
-margin_right = 49.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
+margin_top = 14.0
+margin_right = 52.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 11 )
 text = "o"
 align = 1
 
 [node name="Icono2" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Izquierda"]
-margin_left = 57.0
-margin_right = 89.0
-margin_bottom = 32.0
+margin_left = 60.0
+margin_top = 11.0
+margin_right = 92.0
+margin_bottom = 43.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource( 9 )
 
 [node name="Text" type="Label" parent="MenuPrincipal/Controles/Contenedor/Izquierda"]
-margin_left = 97.0
-margin_right = 198.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 11 )
+margin_left = 100.0
+margin_right = 244.0
+margin_bottom = 55.0
+size_flags_horizontal = 7
+custom_fonts/font = SubResource( 12 )
 text = "mover a la izquierda"
-align = 1
+valign = 1
 autowrap = true
 
 [node name="Derecha" type="HBoxContainer" parent="MenuPrincipal/Controles/Contenedor"]
 editor/display_folded = true
-margin_top = 260.0
-margin_right = 198.0
-margin_bottom = 292.0
+margin_top = 257.0
+margin_right = 244.0
+margin_bottom = 312.0
 size_flags_horizontal = 3
 custom_constants/separation = 8
 alignment = 1
 
 [node name="Icono" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Derecha"]
+margin_top = 11.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 43.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource( 10 )
 
 [node name="Separation" type="Label" parent="MenuPrincipal/Controles/Contenedor/Derecha"]
 margin_left = 40.0
-margin_top = 13.0
-margin_right = 49.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
+margin_top = 14.0
+margin_right = 52.0
+margin_bottom = 40.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 11 )
 text = "o"
 align = 1
 
 [node name="Icono2" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Derecha"]
-margin_left = 57.0
-margin_right = 89.0
-margin_bottom = 32.0
+margin_left = 60.0
+margin_top = 11.0
+margin_right = 92.0
+margin_bottom = 43.0
 grow_horizontal = 0
 grow_vertical = 0
+size_flags_vertical = 4
 texture = ExtResource( 11 )
 
 [node name="Text" type="Label" parent="MenuPrincipal/Controles/Contenedor/Derecha"]
-margin_left = 97.0
-margin_right = 198.0
-margin_bottom = 32.0
-size_flags_horizontal = 3
-size_flags_vertical = 7
-custom_fonts/font = SubResource( 12 )
+margin_left = 100.0
+margin_right = 244.0
+margin_bottom = 55.0
+size_flags_horizontal = 7
+custom_fonts/font = SubResource( 13 )
 text = "mover a la derecha"
-align = 1
+valign = 1
 autowrap = true
 
 [node name="Reiniciar" type="HBoxContainer" parent="MenuPrincipal/Controles/Contenedor"]
 editor/display_folded = true
 visible = false
-margin_top = 284.0
-margin_right = 198.0
-margin_bottom = 316.0
+margin_top = 304.0
+margin_right = 244.0
+margin_bottom = 336.0
 custom_constants/separation = 8
 alignment = 1
 
 [node name="Icono" type="TextureRect" parent="MenuPrincipal/Controles/Contenedor/Reiniciar"]
-margin_left = 22.0
-margin_right = 54.0
+margin_right = 32.0
 margin_bottom = 32.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource( 12 )
 
 [node name="Text" type="Label" parent="MenuPrincipal/Controles/Contenedor/Reiniciar"]
-margin_left = 62.0
-margin_top = 13.0
-margin_right = 176.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
+margin_left = 40.0
+margin_right = 244.0
+margin_bottom = 32.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 11 )
 text = "reiniciar nivel"
 align = 1
 
@@ -532,43 +557,44 @@ margin_left = 40.0
 margin_top = 13.0
 margin_right = 209.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 10 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 11 )
 text = "deshacer movimiento"
 align = 1
 
 [node name="Reglas" type="Control" parent="MenuPrincipal"]
 editor/display_folded = true
+visible = false
 margin_left = 752.0
 margin_top = 32.0
 margin_right = 1008.0
 margin_bottom = 560.0
 
 [node name="Pila" type="VBoxContainer" parent="MenuPrincipal/Reglas"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 24
 
 [node name="Titulo" type="Label" parent="MenuPrincipal/Reglas/Pila"]
 margin_right = 256.0
-margin_bottom = 32.0
-custom_fonts/font = SubResource( 9 )
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.603922, 0.25098, 0.494118, 1 )
 text = "Reglas"
 align = 1
 valign = 1
 
 [node name="Bicho" type="HBoxContainer" parent="MenuPrincipal/Reglas/Pila"]
-editor/display_folded = true
-margin_top = 56.0
+margin_top = 50.0
 margin_right = 256.0
-margin_bottom = 117.0
+margin_bottom = 104.0
 custom_constants/separation = 8
 alignment = 1
 
 [node name="Icono" type="TextureRect" parent="MenuPrincipal/Reglas/Pila/Bicho"]
 margin_right = 48.0
-margin_bottom = 61.0
+margin_bottom = 54.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource( 14 )
@@ -576,62 +602,57 @@ texture = ExtResource( 14 )
 [node name="Text" type="Label" parent="MenuPrincipal/Reglas/Pila/Bicho"]
 margin_left = 56.0
 margin_right = 256.0
-margin_bottom = 61.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 13 )
-text = "- Bicho -
+custom_fonts/font = SubResource( 14 )
+text = "- Bicha -
 Se mueve en línea recta y se detiene cuando golpea algo."
 autowrap = true
 
 [node name="Pared" type="HBoxContainer" parent="MenuPrincipal/Reglas/Pila"]
-editor/display_folded = true
-margin_top = 141.0
+margin_top = 128.0
 margin_right = 256.0
-margin_bottom = 189.0
+margin_bottom = 182.0
 custom_constants/separation = 8
 alignment = 1
 
 [node name="Icono" type="TextureRect" parent="MenuPrincipal/Reglas/Pila/Pared"]
 margin_right = 48.0
-margin_bottom = 48.0
+margin_bottom = 54.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource( 15 )
 
 [node name="Text" type="Label" parent="MenuPrincipal/Reglas/Pila/Pared"]
 margin_left = 56.0
-margin_top = 1.0
 margin_right = 256.0
-margin_bottom = 46.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "- Pared -
-Detiene el movimiento de Bicho."
+Detiene el movimiento de Bicha."
 autowrap = true
 
 [node name="Salida" type="HBoxContainer" parent="MenuPrincipal/Reglas/Pila"]
-editor/display_folded = true
-margin_top = 213.0
+margin_top = 206.0
 margin_right = 256.0
-margin_bottom = 261.0
+margin_bottom = 260.0
 custom_constants/separation = 8
 alignment = 1
 
 [node name="Icono" type="TextureRect" parent="MenuPrincipal/Reglas/Pila/Salida"]
 margin_right = 48.0
-margin_bottom = 48.0
+margin_bottom = 54.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource( 16 )
 
 [node name="Text" type="Label" parent="MenuPrincipal/Reglas/Pila/Salida"]
 margin_left = 56.0
-margin_top = 1.0
 margin_right = 256.0
-margin_bottom = 46.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "- Salida -
-Si Bicho se para sobre esta celda se termina el nivel."
+Si Bicha se para sobre esta celda se termina el nivel."
 autowrap = true
-

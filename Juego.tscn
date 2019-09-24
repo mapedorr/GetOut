@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Juego.gd" type="Script" id=1]
-[ext_resource path="res://niveles/Nivel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://niveles/Nivel1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://niveles/Nivel2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://niveles/Nivel3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sprites/bg.png" type="Texture" id=5]
+[ext_resource path="res://gui/GUI.tscn" type="PackedScene" id=6]
 
 [node name="Juego" type="Node2D"]
 script = ExtResource( 1 )
@@ -10,10 +13,13 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 32.0, 560.0 ],
 "_edit_vertical_guides_": [ 224.0, 752.0 ]
 }
-niveles = [ ExtResource( 2 ) ]
+niveles = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+
+[node name="Fondo" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
 
 [node name="Niveles" type="Node2D" parent="."]
-position = Vector2( 256, 64 )
+position = Vector2( 216, 20 )
 
-[node name="GUI" parent="." instance=ExtResource( 3 )]
-
+[node name="GUI" parent="." instance=ExtResource( 6 )]

@@ -10,10 +10,11 @@
 [ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=9]
 
+
 [node name="Nivel" type="Node2D"]
 script = ExtResource( 1 )
-min_movimientos = 1
-max_movimientos = 2
+min_movimientos = 3
+max_movimientos = 3
 
 [node name="TextosTablero" type="Control" parent="."]
 editor/display_folded = true
@@ -22,10 +23,13 @@ margin_left = -32.0
 margin_top = -32.0
 margin_right = 480.0
 margin_bottom = 480.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Filas" type="Control" parent="TextosTablero"]
-margin_left = -16.0
-margin_right = 16.0
+editor/display_folded = true
+margin_right = 32.0
 margin_bottom = 512.0
 
 [node name="f0" type="Label" parent="TextosTablero/Filas"]
@@ -129,9 +133,9 @@ align = 1
 valign = 1
 
 [node name="Columnas" type="Control" parent="TextosTablero"]
-margin_top = -16.0
+editor/display_folded = true
 margin_right = 512.0
-margin_bottom = 16.0
+margin_bottom = 32.0
 
 [node name="c0" type="Label" parent="TextosTablero/Columnas"]
 margin_left = 32.0
@@ -265,7 +269,7 @@ tipo = "Ninguno"
 position = Vector2( 216, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda05" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 24 )
@@ -505,7 +509,7 @@ tipo = ""
 position = Vector2( 216, 216 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda45" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 216 )
@@ -601,7 +605,7 @@ tipo = "Ninguno"
 position = Vector2( 24, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Pared"
 
 [node name="Celda61" type="Sprite" parent="Tablero"]
 position = Vector2( 72, 312 )
@@ -838,19 +842,10 @@ script = ExtResource( 5 )
 tipo = "Salida"
 
 [node name="Paredes" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Llaves" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Cerraduras" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 visible = false

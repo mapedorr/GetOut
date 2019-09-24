@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://fichas/pared/Pared.gd" type="Script" id=1]
-[ext_resource path="res://fichas/pared/pared.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/pared.png" type="Texture" id=2]
+
 
 [node name="Pared" type="Node2D" groups=[
 "obstaculo",

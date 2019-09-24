@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="TallerUniversidadNacional"
+config/name="GetOut"
 run/main_scene="res://Juego.tscn"
 config/icon="res://icon.png"
 
@@ -25,6 +25,8 @@ gdscript/warnings/enable=false
 
 [display]
 
+window/size/width=912
+window/size/height=512
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -62,7 +64,8 @@ ui_down={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0.109804, 0.0862745, 0.0941176, 1 )
+environment/default_clear_color=Color( 0.756863, 0.85098, 0.94902, 1 )
 environment/default_environment="res://default_env.tres"

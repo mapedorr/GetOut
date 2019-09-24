@@ -10,10 +10,11 @@
 [ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=9]
 
+
 [node name="Nivel" type="Node2D"]
 script = ExtResource( 1 )
-min_movimientos = 1
-max_movimientos = 2
+min_movimientos = 2
+max_movimientos = 6
 
 [node name="TextosTablero" type="Control" parent="."]
 editor/display_folded = true
@@ -22,10 +23,13 @@ margin_left = -32.0
 margin_top = -32.0
 margin_right = 480.0
 margin_bottom = 480.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Filas" type="Control" parent="TextosTablero"]
-margin_left = -16.0
-margin_right = 16.0
+editor/display_folded = true
+margin_right = 32.0
 margin_bottom = 512.0
 
 [node name="f0" type="Label" parent="TextosTablero/Filas"]
@@ -129,9 +133,9 @@ align = 1
 valign = 1
 
 [node name="Columnas" type="Control" parent="TextosTablero"]
-margin_top = -16.0
+editor/display_folded = true
 margin_right = 512.0
-margin_bottom = 16.0
+margin_bottom = 32.0
 
 [node name="c0" type="Label" parent="TextosTablero/Columnas"]
 margin_left = 32.0
@@ -271,7 +275,7 @@ tipo = "Ninguno"
 position = Vector2( 264, 24 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda06" type="Sprite" parent="Tablero"]
 position = Vector2( 312, 24 )
@@ -427,7 +431,7 @@ tipo = ""
 position = Vector2( 72, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda32" type="Sprite" parent="Tablero"]
 position = Vector2( 120, 168 )
@@ -475,7 +479,7 @@ tipo = ""
 position = Vector2( 456, 168 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Salida"
 
 [node name="Celda40" type="Sprite" parent="Tablero"]
 position = Vector2( 24, 216 )
@@ -589,7 +593,7 @@ tipo = "Ninguno"
 position = Vector2( 408, 264 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Pared"
 
 [node name="Celda59" type="Sprite" parent="Tablero"]
 position = Vector2( 456, 264 )
@@ -601,7 +605,7 @@ tipo = "Ninguno"
 position = Vector2( 24, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = ""
+tipo = "Ninguno"
 
 [node name="Celda61" type="Sprite" parent="Tablero"]
 position = Vector2( 72, 312 )
@@ -625,7 +629,7 @@ tipo = ""
 position = Vector2( 216, 312 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda65" type="Sprite" parent="Tablero"]
 position = Vector2( 264, 312 )
@@ -793,7 +797,7 @@ tipo = "Ninguno"
 position = Vector2( 120, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Ninguno"
+tipo = "Pared"
 
 [node name="Celda93" type="Sprite" parent="Tablero"]
 position = Vector2( 168, 456 )
@@ -835,7 +839,7 @@ tipo = "Ninguno"
 position = Vector2( 456, 456 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
-tipo = "Salida"
+tipo = "Ninguno"
 
 [node name="Paredes" type="Node2D" parent="."]
 __meta__ = {
@@ -843,14 +847,8 @@ __meta__ = {
 }
 
 [node name="Llaves" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Cerraduras" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -863,7 +861,7 @@ es_obstaculo = false
 direccion = 1
 
 [node name="Salida" parent="." instance=ExtResource( 8 )]
-position = Vector2( 456, 456 )
+position = Vector2( 456, 168 )
 
 [node name="Personaje" parent="." instance=ExtResource( 9 )]
 position = Vector2( 24, 24 )

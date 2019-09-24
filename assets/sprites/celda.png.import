@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/salida.png-a95e6f7bdc8fd237576010491188ae1e.stex"
+path="res://.import/celda.png-05132209671723dae283e29c411c4c39.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fichas/salida/salida.png"
-dest_files=[ "res://.import/salida.png-a95e6f7bdc8fd237576010491188ae1e.stex" ]
+source_file="res://assets/sprites/celda.png"
+dest_files=[ "res://.import/celda.png-05132209671723dae283e29c411c4c39.stex" ]
 
 [params]
 

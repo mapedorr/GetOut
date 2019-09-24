@@ -10,6 +10,7 @@
 [ext_resource path="res://fichas/salida/Salida.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fichas/personaje/Personaje.tscn" type="PackedScene" id=9]
 
+
 [node name="Nivel" type="Node2D"]
 script = ExtResource( 1 )
 min_movimientos = 1
@@ -24,6 +25,7 @@ margin_right = 480.0
 margin_bottom = 480.0
 
 [node name="Filas" type="Control" parent="TextosTablero"]
+editor/display_folded = true
 margin_left = -16.0
 margin_right = 16.0
 margin_bottom = 512.0
@@ -33,7 +35,7 @@ margin_top = 32.0
 margin_right = 32.0
 margin_bottom = 80.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "0"
 align = 1
 valign = 1
@@ -43,7 +45,7 @@ margin_top = 80.0
 margin_right = 32.0
 margin_bottom = 128.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "1"
 align = 1
 valign = 1
@@ -53,7 +55,7 @@ margin_top = 128.0
 margin_right = 32.0
 margin_bottom = 176.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "2"
 align = 1
 valign = 1
@@ -63,7 +65,7 @@ margin_top = 176.0
 margin_right = 32.0
 margin_bottom = 224.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "3"
 align = 1
 valign = 1
@@ -73,7 +75,7 @@ margin_top = 224.0
 margin_right = 32.0
 margin_bottom = 272.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "4"
 align = 1
 valign = 1
@@ -83,7 +85,7 @@ margin_top = 272.0
 margin_right = 32.0
 margin_bottom = 320.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "5"
 align = 1
 valign = 1
@@ -93,7 +95,7 @@ margin_top = 320.0
 margin_right = 32.0
 margin_bottom = 368.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "6"
 align = 1
 valign = 1
@@ -103,7 +105,7 @@ margin_top = 368.0
 margin_right = 32.0
 margin_bottom = 416.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "7"
 align = 1
 valign = 1
@@ -113,7 +115,7 @@ margin_top = 416.0
 margin_right = 32.0
 margin_bottom = 464.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "8"
 align = 1
 valign = 1
@@ -123,12 +125,13 @@ margin_top = 464.0
 margin_right = 32.0
 margin_bottom = 512.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "9"
 align = 1
 valign = 1
 
 [node name="Columnas" type="Control" parent="TextosTablero"]
+editor/display_folded = true
 margin_top = -16.0
 margin_right = 512.0
 margin_bottom = 16.0
@@ -138,7 +141,7 @@ margin_left = 32.0
 margin_right = 80.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "0"
 align = 1
 valign = 1
@@ -148,7 +151,7 @@ margin_left = 80.0
 margin_right = 128.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "1"
 align = 1
 valign = 1
@@ -158,7 +161,7 @@ margin_left = 128.0
 margin_right = 176.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "2"
 align = 1
 valign = 1
@@ -168,7 +171,7 @@ margin_left = 176.0
 margin_right = 224.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "3"
 align = 1
 valign = 1
@@ -178,7 +181,7 @@ margin_left = 224.0
 margin_right = 272.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "4"
 align = 1
 valign = 1
@@ -188,7 +191,7 @@ margin_left = 272.0
 margin_right = 320.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "5"
 align = 1
 valign = 1
@@ -198,7 +201,7 @@ margin_left = 320.0
 margin_right = 368.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "6"
 align = 1
 valign = 1
@@ -208,7 +211,7 @@ margin_left = 368.0
 margin_right = 416.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "7"
 align = 1
 valign = 1
@@ -218,7 +221,7 @@ margin_left = 416.0
 margin_right = 464.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "8"
 align = 1
 valign = 1
@@ -228,7 +231,7 @@ margin_left = 464.0
 margin_right = 512.0
 margin_bottom = 32.0
 theme = ExtResource( 2 )
-custom_colors/font_color = Color( 0.941176, 0.831373, 0.447059, 1 )
+custom_colors/font_color = Color( 0.0705882, 0.0901961, 0.239216, 1 )
 text = "9"
 align = 1
 valign = 1
@@ -838,19 +841,10 @@ script = ExtResource( 5 )
 tipo = "Salida"
 
 [node name="Paredes" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Llaves" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Cerraduras" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 visible = false
