@@ -149,11 +149,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -512.0
+margin_left = -456.0
 margin_top = -64.0
-margin_right = 512.0
+margin_right = 456.0
 margin_bottom = 64.0
-color = Color( 0.941176, 0.831373, 0.447059, 1 )
+color = Color( 0.258824, 0.737255, 0.498039, 1 )
 
 [node name="Texto" type="Label" parent="Mensajes/Super"]
 anchor_left = 0.5
@@ -181,11 +181,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -512.0
+margin_left = -456.0
 margin_top = -64.0
-margin_right = 512.0
+margin_right = 456.0
 margin_bottom = 64.0
-color = Color( 0.423529, 0.54902, 0.313726, 1 )
+color = Color( 0.54902, 0.317647, 0.8, 1 )
 
 [node name="Texto" type="Label" parent="Mensajes/Victoria"]
 anchor_left = 0.5
@@ -213,11 +213,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -512.0
+margin_left = -456.0
 margin_top = -64.0
-margin_right = 512.0
+margin_right = 456.0
 margin_bottom = 64.0
-color = Color( 0.631373, 0.239216, 0.231373, 1 )
+color = Color( 0.847059, 0.219608, 0.262745, 1 )
 
 [node name="Texto" type="Label" parent="Mensajes/Derrota"]
 anchor_left = 0.5
